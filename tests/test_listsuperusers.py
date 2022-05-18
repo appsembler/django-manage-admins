@@ -32,3 +32,14 @@ class TestListSuperusers(TestCase):
         u = UserFactory(is_superuser=False)
         out = self.call_command()
         self.assertFalse(u.username in out)
+
+    def test_only_includes_active_superusers(self):
+        u_active = UserFactory(is_superuser=True, is_active=True)
+        u_inactive = UserFactory(is_superuser=True, is_active=False)
+
+        out = self.call_command()
+
+        self.assertTrue(u_active.username in out)
+        self.assertFalse(
+            u_inactive.username in out, "inactive superusers should not be listed"
+        )
