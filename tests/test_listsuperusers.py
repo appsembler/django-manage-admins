@@ -27,3 +27,8 @@ class TestListSuperusers(TestCase):
         u = UserFactory(is_superuser=True)
         out = self.call_command()
         self.assertTrue(u.username in out)
+
+    def test_does_not_include_non_superusers(self):
+        u = UserFactory(is_superuser=False)
+        out = self.call_command()
+        self.assertFalse(u.username in out)

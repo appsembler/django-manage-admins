@@ -7,5 +7,5 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         User = get_user_model()
-        superusers = User.objects.filter()
+        superusers = User.objects.filter(is_superuser=True)
         self.stdout.write("\n".join([s.username for s in superusers]))
