@@ -43,3 +43,13 @@ class TestListSuperusers(TestCase):
         self.assertFalse(
             u_inactive.username in out, "inactive superusers should not be listed"
         )
+
+    def test_alphabetical_order(self):
+        # create them in non-alphabetical order
+        UserFactory(username="b_user", is_superuser=True),
+        UserFactory(username="c_user", is_superuser=True),
+        UserFactory(username="a_user", is_superuser=True),
+
+        out = self.call_command()
+
+        self.assertTrue("a_user\nb_user\nc_user" in out)
