@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `list_superusers` command.
 - `disable_user` command.
+- `list_staff` command.
 
 ### Changed
 ### Removed
