@@ -25,6 +25,12 @@ jobs:
           - name: python3.5 django2
             python-version: 3.5
             tox-env: py3-django2
+          - name: python3.6 django2
+            python-version: 3.6
+            tox-env: py3-django2
+          - name: python3.6 django3
+            python-version: 3.6
+            tox-env: py3-django3
           - name: python3.8 django2
             python-version: 3.8
             tox-env: py3-django2
