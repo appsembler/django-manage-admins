@@ -1,5 +1,6 @@
 include MANIFEST.in
 include tox.ini
 include runtests.py
+include README.md
 graft src
 graft tests
