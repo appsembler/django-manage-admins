@@ -7,7 +7,4 @@ accounts. Useful for compliance.
 
 * `list_superusers` - outputs usernames of all active superusers.
 * `disable_user` - disables a specified user account
-
-## planned:
-
 * `list_staff` - outputs usernames of all active staff users
