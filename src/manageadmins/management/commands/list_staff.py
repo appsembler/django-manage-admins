@@ -7,5 +7,5 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         User = get_user_model()
-        staff = User.objects.filter(is_staff=True, is_active=True)
+        staff = User.objects.filter(is_staff=True, is_active=True).order_by("username")
         self.stdout.write("\n".join([s.username for s in staff]))
