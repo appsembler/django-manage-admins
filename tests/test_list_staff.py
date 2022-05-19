@@ -3,8 +3,10 @@ from io import StringIO
 from django.core.management import call_command
 from django.test import TestCase
 
+from .factories import UserFactory
 
-class TestListSuperusers(TestCase):
+
+class TestListStaff(TestCase):
     def call_command(self, *args, **kwargs):
         out = StringIO()
         call_command(
@@ -19,3 +21,25 @@ class TestListSuperusers(TestCase):
     def test_command_exists(self):
         """just make sure the command even exists"""
         self.call_command()
+
+    def test_includes_staff(self):
+        u = UserFactory(is_staff=True)
+        out = self.call_command()
+        self.assertTrue(u.username in out)
+
+    def test_does_not_include_non_staff(self):
+        u = UserFactory(is_staff=False)
+        out = self.call_command()
+        self.assertFalse(u.username in out)
+
+    def test_only_includes_active_staff(self):
+        """we don't care about inactive users"""
+        u_active = UserFactory(is_staff=True, is_active=True)
+        u_inactive = UserFactory(is_staff=True, is_active=False)
+
+        out = self.call_command()
+
+        self.assertTrue(u_active.username in out)
+        self.assertFalse(
+            u_inactive.username in out, "inactive staff should not be listed"
+        )
