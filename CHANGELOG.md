@@ -7,13 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+### Changed
+### Removed
+
+
+## v0.1.0
+
+### Added
 
 - `list_superusers` command.
 - `disable_user` command.
 - `list_staff` command.
-
-### Changed
-### Removed
 
 
 [Unreleased]: https://github.com/appsembler/django-manage-admins/compare/v0.1.0...HEAD
